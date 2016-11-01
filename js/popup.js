@@ -24,8 +24,6 @@
         $(this.elementClass).on('click',function(){
             var target = $(this).attr('data-target');
             var getCenter = -(($(target).width())/2);
-            //var overlayDiv = $(self.overlay).css({'display': 'none', 'background': 'rgba(0,0,0, .6)', 'position': 'fixed', 'top': '0', 'left': '0', 'right': '0',
-             //   'bottom': '0', 'z-index': '998'});
             $(target).animate({'top': '200',},self.config.popupIn)
                     .animate({'left': '50%',},{queue:false},self.config.popupIn)
                     .animate({'margin-left' : getCenter,},{queue:false},self.config.popupIn);
