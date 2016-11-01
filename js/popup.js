@@ -18,19 +18,20 @@
         this.elementClass = '.' + ($(this.elements).attr('class'));
         this.overlay = '.'+self.config.classOverlay;
         $('body').append('<div class="'+self.config.classOverlay+'"></div>');
-        this.actionUi(self)
-        console.log('<div class="'+self.config.classOverlay+'"></div>');
-
+        this.actionUi(self);
     }
     PopupPlug.prototype.actionUi = function (self) {
         $(this.elementClass).on('click',function(){
             var target = $(this).attr('data-target');
             var getCenter = -(($(target).width())/2);
-
+            //var overlayDiv = $(self.overlay).css({'display': 'none', 'background': 'rgba(0,0,0, .6)', 'position': 'fixed', 'top': '0', 'left': '0', 'right': '0',
+             //   'bottom': '0', 'z-index': '998'});
             $(target).animate({'top': '200',},self.config.popupIn)
                     .animate({'left': '50%',},{queue:false},self.config.popupIn)
                     .animate({'margin-left' : getCenter,},{queue:false},self.config.popupIn);
-            if(self.config.overlay == true){   
+            if(self.config.overlay == true){
+                $(self.overlay).css({'display': 'none', 'background': 'rgba(0,0,0, .6)', 'position': 'fixed', 'top': '0', 'left': '0', 'right': '0',
+                'bottom': '0', 'z-index': '998'}); 
                 $(self.overlay).fadeIn(self.config.overlayIn);
             }
             self.closePopup(target,self);
